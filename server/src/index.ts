@@ -1,8 +1,13 @@
 import express from "express";
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./auth.ts";
 import { prisma } from "./db.ts";
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Must be mounted before express.json(), which would consume the body.
+app.all("/api/auth/*splat", toNodeHandler(auth));
 
 app.use(express.json());
 
