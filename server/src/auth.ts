@@ -10,6 +10,19 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: "postgresql" }),
   emailAndPassword: {
     enabled: true,
+    // No public registration: users (admin, agents) are created server-side.
+    disableSignUp: true,
+  },
+  user: {
+    additionalFields: {
+      // input: false — clients can never set or change their own role.
+      role: {
+        type: ["admin", "agent"],
+        required: false,
+        defaultValue: "agent",
+        input: false,
+      },
+    },
   },
   trustedOrigins: process.env.CLIENT_URL ? [process.env.CLIENT_URL] : [],
 });
