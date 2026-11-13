@@ -44,9 +44,9 @@ The project is split into 10 phases. Each phase ends with something working that
 - [ ] Add `requireAuth` middleware (rejects requests without a valid session)
 - [ ] Add `requireAdmin` middleware (rejects non-admins)
 - [ ] Add `GET /api/me` to return the logged-in user
-- [ ] Build the login page
-- [ ] Add a logout button
-- [ ] Add protected routes in React Router (redirect to login when signed out)
+- [x] Build the login page
+- [x] Add a logout button
+- [x] Add protected routes in React Router (redirect to login when signed out)
 - [ ] Write tests for login, logout, and protected routes
 
 **Done when:** the seeded admin can log in, see a protected page, and log out.
